@@ -1,7 +1,7 @@
 
 FROM python:2.7.18-slim
 
-RUN apt-get update && apt-get install -y phantomjs
+RUN apt-get update && apt-get install -y nodejs npm libfontconfig1 && npm install -g phantomjs-prebuilt 2>&1 || true && ln -sf "$(npm root -g)/phantomjs-prebuilt/lib/phantom/bin/phantomjs" /usr/local/bin/phantomjs
 
 ENV QT_QPA_PLATFORM=offscreen
 ENV OPENSSL_CONF=/dev/null
